@@ -1,0 +1,13 @@
+import { writeFile } from 'node:fs/promises';
+if (!process.env.TIDE_API_URL || !process.env.TIDE_API_KEY) throw new Error('Set TIDE_API_URL and TIDE_API_KEY in GitHub Secrets.');
+const url = new URL(process.env.TIDE_API_URL);
+url.searchParams.set('serviceKey', process.env.TIDE_API_KEY);
+url.searchParams.set('date', new Date().toISOString().slice(0,10).replaceAll('-',''));
+url.searchParams.set('obsCode', 'DT_0060');
+url.searchParams.set('resultType', 'json');
+const res = await fetch(url); if (!res.ok) throw new Error(`Tide API HTTP ${res.status}`);
+const raw = await res.json();
+const items = raw?.response?.body?.items?.item ?? raw?.items ?? raw?.data ?? [];
+const points = (Array.isArray(items) ? items : [items]).map(x => ({ time: x.predcDate || x.predicDate || x.tideTime || x.time, levelCm: Number(x.tideLevel ?? x.tideHeight ?? x.level ?? x.tphLevel) })).filter(x => x.time && Number.isFinite(x.levelCm));
+if (!points.length) throw new Error('No tide points found; check TIDE_API_URL response format.');
+await writeFile('tide-data.json', JSON.stringify({ updatedAt: new Date().toISOString(), station: '부산항', points }, null, 2));
