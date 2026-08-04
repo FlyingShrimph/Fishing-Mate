@@ -1,7 +1,7 @@
 (() => {
   const card = document.querySelector('.species');
   if (!card) return;
-  card.innerHTML = '<div class="panel-head"><div><span class="tag violet">SPECIES CHECK</span><h2>묘사로 어종 확인</h2></div><span class="count">사용자 입력 기반</span></div><p>사진 없이 물고기의 특징을 입력하면 예상 어종과 위험 정보를 안내합니다.</p><textarea id="species-description" placeholder="예: 은빛 몸통, 검은 줄무늬, 약 25cm, 방파제에서 잡았어요"></textarea><div class="fish-actions"><button class="secondary" id="species-clear">지우기</button><button class="primary" id="species-check">어종 확인</button></div><div class="safe">✓ 결과는 참고용이며 확실하지 않으면 만지지 마세요.</div><div id="species-result" hidden></div>';
+  card.innerHTML = '<div class="panel-head"><div><span class="tag violet">SPECIES CHECK</span><h2>묘사로 어종 확인</h2></div><span class="count">사용자 입력 기반</span></div><div class="description-box"><div class="fish">♓</div><b>물고기의 특징을 입력하세요</b><small>색상, 크기, 무늬, 모양, 발견 장소를 자세히 적어주세요.</small><textarea id="species-description" placeholder="예: 은빛 몸통, 검은 줄무늬, 약 25cm, 방파제에서 잡았어요"></textarea></div><div class="fish-actions"><button class="secondary" id="species-clear">지우기</button><button class="primary" id="species-check">어종 확인</button></div><div class="safe">✓ 결과는 참고용이며 확실하지 않으면 만지지 마세요.</div><div id="species-result" hidden></div>';
   const input = document.getElementById('species-description');
   const result = document.getElementById('species-result');
   document.getElementById('species-clear').onclick = () => { input.value = ''; result.hidden = true; };
