@@ -16,3 +16,24 @@ if(species){species.innerHTML=`<div class="panel-head"><div><span class="tag vio
 document.title='낚시 메이트 · 해양 안전 관제';
 const brandName=document.querySelector('.brand b'); if(brandName) brandName.textContent='낚시 메이트';
 const brandSub=document.querySelector('.brand small'); if(brandSub) brandSub.textContent='FISHING MATE';
+
+const descriptionSpeciesCard=document.querySelector('.species');
+if (descriptionSpeciesCard) {
+  descriptionSpeciesCard.innerHTML = `
+    <div class="panel-head"><div><span class="tag violet">SPECIES CHECK</span><h2>묘사로 어종 확인</h2></div><span class="count">사용자 입력 기반</span></div>
+    <p class="species-guide">사진 없이 물고기의 특징을 입력하면 예상 어종과 위험 정보를 안내합니다.</p>
+    <textarea id="fish-description" class="fish-description" placeholder="예: 은빛 몸통, 검은 줄무늬, 약 25cm, 방파제에서 잡았어요"></textarea>
+    <div class="fish-actions"><button class="secondary" id="clear-fish">지우기</button><button class="primary" id="check-fish">어종 확인</button></div>
+    <div class="safe"><span>✓</span> 결과는 참고용이며 확실하지 않으면 만지지 마세요.</div>
+    <div id="fish-result" class="fish-result" hidden></div>`;
+  const input=document.getElementById('fish-description'), result=document.getElementById('fish-result');
+  document.getElementById('clear-fish').onclick=()=>{input.value='';result.hidden=true;};
+  document.getElementById('check-fish').onclick=()=>{
+    const text=input.value.trim();
+    if(!text){show('물고기의 특징을 먼저 입력해 주세요.');return;}
+    const dangerous=['복어','쏨뱅이','미역치','쑤기미','가시','독','날카로운 이빨'].some(k=>text.includes(k));
+    const clues=text.includes('줄무늬')?'돌돔·벤자리 등 줄무늬 어종':text.includes('은빛')?'전갱이·고등어 등 회유성 어종':text.includes('납작')?'가자미·광어 등 납작한 어종':'특징이 비슷한 연안 어종';
+    result.hidden=false; result.className='fish-result '+(dangerous?'high':'low');
+    result.innerHTML=`<b>예상 어종군: ${clues}</b><p>${dangerous?'가시나 독성이 있을 수 있으니 만지지 말고 사진과 함께 전문가에게 확인받으세요.':'추가로 몸 길이, 지느러미 색, 발견 장소를 입력하면 더 정확해집니다.'}</p><small>입력한 묘사 기반 참고 결과</small>`;
+  };
+}
