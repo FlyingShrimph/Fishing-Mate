@@ -9,5 +9,5 @@
       const target = document.getElementById('safety-level'); target.textContent = value; target.className = `safety-${value.replaceAll(' ','')}`;
       document.getElementById('safety-date').textContent = `${data.date.slice(4,6)}월 ${data.date.slice(6,8)}일 발표 · 출처 ${data.source}`;
     })
-    .catch(() => { document.getElementById('safety-level').textContent = '공식 페이지에서 확인'; document.getElementById('safety-date').textContent = '외부 연결이 제한되었습니다'; });
+    .catch(() => { document.getElementById('safety-level').textContent = '지수 갱신 중'; document.getElementById('safety-date').textContent = '잠시 후 다시 확인해 주세요'; });
 })();
