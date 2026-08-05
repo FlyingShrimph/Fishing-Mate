@@ -28,7 +28,20 @@
       { name:'화손대 갯바위', lat:35.0400, lon:128.9700, color:'#ee6a52', text:'갯바위 접근 주의' },
       { name:'오랑대 갯바위', lat:35.2000, lon:129.2400, color:'#ee6a52', text:'갯바위 접근 주의' },
       { name:'외양포 갯바위', lat:34.9900, lon:128.8200, color:'#ee6a52', text:'갯바위 접근 주의' },
-      { name:'감수서', lat:35.0200, lon:128.8300, color:'#ee6a52', text:'갯바위 접근 주의' }
+      { name:'감수서', lat:35.0200, lon:128.8300, color:'#ee6a52', text:'갯바위 접근 주의' },
+      { name:'청사포항 방파제', lat:35.1600, lon:129.2000, color:'#ee6a52', text:'방파제 접근 주의' },
+      { name:'남항대교옆 TTP', lat:35.0700, lon:129.0200, color:'#ee6a52', text:'테트라포드 접근 주의' },
+      { name:'마린시티 방파제', lat:35.1560, lon:129.1400, color:'#ee6a52', text:'방파제 접근 주의' },
+      { name:'민락항 방파제', lat:35.1530, lon:129.1260, color:'#ee6a52', text:'방파제 접근 주의' },
+      { name:'낫개 방파제 TTP', lat:35.0500, lon:128.9700, color:'#ee6a52', text:'테트라포드 접근 주의' },
+      { name:'성창 방파제', lat:35.0450, lon:128.9650, color:'#ee6a52', text:'방파제 접근 주의' },
+      { name:'감천항 서방파제', lat:35.0750, lon:129.0000, color:'#ee6a52', text:'항만 접근 주의' },
+      { name:'감천항 동방파제', lat:35.0800, lon:129.0100, color:'#ee6a52', text:'항만 접근 주의' },
+      { name:'새바지항', lat:34.9900, lon:128.8200, color:'#ee6a52', text:'항구 접근 주의' },
+      { name:'칠암항 방파제', lat:35.2800, lon:129.2700, color:'#ee6a52', text:'방파제 접근 주의' },
+      { name:'문중항 방파제', lat:35.2850, lon:129.2500, color:'#ee6a52', text:'방파제 접근 주의' },
+      { name:'월드컵 방파제', lat:35.2400, lon:129.2200, color:'#ee6a52', text:'방파제 접근 주의' },
+      { name:'두송 방파제', lat:35.0500, lon:128.9900, color:'#ee6a52', text:'방파제 접근 주의' }
     ];
     zones.forEach(zone => { L.circleMarker([zone.lat,zone.lon],{radius:8,color:zone.color,fillColor:zone.color,fillOpacity:.95}).addTo(map).bindPopup(`<b>${zone.name}</b><br>${zone.text}`); L.circle([zone.lat,zone.lon],{radius:500,color:zone.color,fillColor:zone.color,fillOpacity:.08,weight:1}).addTo(map); });
     const list = document.createElement('div'); list.className = 'danger-zone-list'; list.innerHTML = '<b>등록된 위험 구역</b><div class="danger-zone-items"></div><div class="danger-zone-pages"><button type="button" class="zone-prev">이전</button><span class="zone-page"></span><button type="button" class="zone-next">다음</button></div>'; container.parentElement.appendChild(list);

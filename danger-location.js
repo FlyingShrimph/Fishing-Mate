@@ -21,7 +21,20 @@
     { name: '화손대 갯바위', lat: 35.0400, lon: 128.9700, warning: '갯바위 접근 주의' },
     { name: '오랑대 갯바위', lat: 35.2000, lon: 129.2400, warning: '갯바위 접근 주의' },
     { name: '외양포 갯바위', lat: 34.9900, lon: 128.8200, warning: '갯바위 접근 주의' },
-    { name: '감수서', lat: 35.0200, lon: 128.8300, warning: '갯바위 접근 주의' }
+    { name: '감수서', lat: 35.0200, lon: 128.8300, warning: '갯바위 접근 주의' },
+    { name: '청사포항 방파제', lat: 35.1600, lon: 129.2000, warning: '방파제 접근 주의' },
+    { name: '남항대교옆 TTP', lat: 35.0700, lon: 129.0200, warning: '테트라포드 접근 주의' },
+    { name: '마린시티 방파제', lat: 35.1560, lon: 129.1400, warning: '방파제 접근 주의' },
+    { name: '민락항 방파제', lat: 35.1530, lon: 129.1260, warning: '방파제 접근 주의' },
+    { name: '낫개 방파제 TTP', lat: 35.0500, lon: 128.9700, warning: '테트라포드 접근 주의' },
+    { name: '성창 방파제', lat: 35.0450, lon: 128.9650, warning: '방파제 접근 주의' },
+    { name: '감천항 서방파제', lat: 35.0750, lon: 129.0000, warning: '항만 접근 주의' },
+    { name: '감천항 동방파제', lat: 35.0800, lon: 129.0100, warning: '항만 접근 주의' },
+    { name: '새바지항', lat: 34.9900, lon: 128.8200, warning: '항구 접근 주의' },
+    { name: '칠암항 방파제', lat: 35.2800, lon: 129.2700, warning: '방파제 접근 주의' },
+    { name: '문중항 방파제', lat: 35.2850, lon: 129.2500, warning: '방파제 접근 주의' },
+    { name: '월드컵 방파제', lat: 35.2400, lon: 129.2200, warning: '방파제 접근 주의' },
+    { name: '두송 방파제', lat: 35.0500, lon: 128.9900, warning: '방파제 접근 주의' }
   ];
   const distance = (a, b) => { const R=6371000, p=Math.PI/180, x=(b.lat-a.lat)*p, y=(b.lon-a.lon)*p; return 2*R*Math.asin(Math.sqrt(Math.sin(x/2)**2+Math.cos(a.lat*p)*Math.cos(b.lat*p)*Math.sin(y/2)**2)); };
   window.addEventListener('fishingmate:location', event => {
