@@ -4,6 +4,7 @@
   const css = document.createElement('link'); css.rel='stylesheet'; css.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css'; document.head.appendChild(css);
   const script = document.createElement('script'); script.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
   script.onload = () => {
+    setTimeout(() => {
     container.innerHTML = '<div id="live-danger-map"></div>';
     const map = L.map('live-danger-map', { zoomControl: true }).setView([35.1796,129.1996], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
@@ -20,6 +21,7 @@
       map.setView([latitude,longitude], 14);
     });
     setTimeout(() => map.invalidateSize(), 250);
+    }, 1200);
   };
   document.head.appendChild(script);
 })();
