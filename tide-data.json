@@ -1,7 +1,8 @@
 {
   "updatedAt": "2026-08-05T00:00:00+09:00",
   "station": "부산항",
-  "source": "부산 2026년 8월 물때 달력",
+  "source": "낚시비서 부산 물때 달력",
+  "sourceUrl": "https://fishbisu.com/harbors/%EB%B6%80%EC%82%B0/calendar/2026-08",
   "points": [
     { "time": "2026-08-05T05:54:00+09:00", "levelCm": 37 },
     { "time": "2026-08-05T12:26:00+09:00", "levelCm": 115 },
