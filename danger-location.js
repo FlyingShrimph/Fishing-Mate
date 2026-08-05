@@ -2,8 +2,9 @@
   const card = document.querySelector('.zone');
   if (!card) return;
   const zones = [
-    { name: '송정 방파제 외곽', lat: 35.1796, lon: 129.1996, warning: '너울성 파도 · 접근 주의' },
-    { name: '구덕포 갯바위', lat: 35.1747, lon: 129.2075, warning: '미끄럼 주의' }
+    { name: '화명 생태공원', lat: 35.2050, lon: 129.0120, warning: '수변 접근 주의' },
+    { name: '삼락 생태공원', lat: 35.1700, lon: 128.9900, warning: '수변 접근 주의' },
+    { name: '일광해수욕장', lat: 35.2630, lon: 129.2500, warning: '해파리 출현 주의' }
   ];
   const distance = (a, b) => { const R=6371000, p=Math.PI/180, x=(b.lat-a.lat)*p, y=(b.lon-a.lon)*p; return 2*R*Math.asin(Math.sqrt(Math.sin(x/2)**2+Math.cos(a.lat*p)*Math.cos(b.lat*p)*Math.sin(y/2)**2)); };
   window.addEventListener('fishingmate:location', event => {

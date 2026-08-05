@@ -9,8 +9,9 @@
     const map = L.map('live-danger-map', { zoomControl: true }).setView([35.1796,129.1996], 13);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap contributors' }).addTo(map);
     const zones = [
-      { name:'송정 방파제 외곽', lat:35.1796, lon:129.1996, color:'#ee6a52', text:'너울성 파도 · 접근 주의' },
-      { name:'구덕포 갯바위', lat:35.1747, lon:129.2075, color:'#edae45', text:'미끄럼 주의' }
+      { name:'화명 생태공원', lat:35.2050, lon:129.0120, color:'#ee6a52', text:'수변 접근 주의' },
+      { name:'삼락 생태공원', lat:35.1700, lon:128.9900, color:'#ee6a52', text:'수변 접근 주의' },
+      { name:'일광해수욕장', lat:35.2630, lon:129.2500, color:'#edae45', text:'해파리 출현 주의' }
     ];
     zones.forEach(zone => { L.circleMarker([zone.lat,zone.lon],{radius:8,color:zone.color,fillColor:zone.color,fillOpacity:.95}).addTo(map).bindPopup(`<b>${zone.name}</b><br>${zone.text}`); L.circle([zone.lat,zone.lon],{radius:500,color:zone.color,fillColor:zone.color,fillOpacity:.08,weight:1}).addTo(map); });
     let current;
