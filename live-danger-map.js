@@ -31,7 +31,10 @@
       { name:'감수서', lat:35.0200, lon:128.8300, color:'#ee6a52', text:'갯바위 접근 주의' }
     ];
     zones.forEach(zone => { L.circleMarker([zone.lat,zone.lon],{radius:8,color:zone.color,fillColor:zone.color,fillOpacity:.95}).addTo(map).bindPopup(`<b>${zone.name}</b><br>${zone.text}`); L.circle([zone.lat,zone.lon],{radius:500,color:zone.color,fillColor:zone.color,fillOpacity:.08,weight:1}).addTo(map); });
-    const list = document.createElement('div'); list.className = 'danger-zone-list'; list.innerHTML = '<b>등록된 위험 구역</b>' + zones.map(zone => `<span>● ${zone.name}</span>`).join(''); container.parentElement.appendChild(list);
+    const list = document.createElement('div'); list.className = 'danger-zone-list'; list.innerHTML = '<b>등록된 위험 구역</b><div class="danger-zone-items"></div><div class="danger-zone-pages"><button type="button" class="zone-prev">이전</button><span class="zone-page"></span><button type="button" class="zone-next">다음</button></div>'; container.parentElement.appendChild(list);
+    let page = 0; const pageSize = 5; const items = list.querySelector('.danger-zone-items'); const pageLabel = list.querySelector('.zone-page');
+    const renderZonePage = () => { const total = Math.ceil(zones.length / pageSize); page = Math.max(0, Math.min(page, total - 1)); items.innerHTML = zones.slice(page * pageSize, page * pageSize + pageSize).map(zone => `<span>● ${zone.name}</span>`).join(''); pageLabel.textContent = `${page + 1} / ${total}`; list.querySelector('.zone-prev').disabled = page === 0; list.querySelector('.zone-next').disabled = page === total - 1; };
+    list.querySelector('.zone-prev').onclick = () => { page--; renderZonePage(); }; list.querySelector('.zone-next').onclick = () => { page++; renderZonePage(); }; renderZonePage();
     let current;
     window.addEventListener('fishingmate:location', event => {
       const { latitude, longitude } = event.detail;
